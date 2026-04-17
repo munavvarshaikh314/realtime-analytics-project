@@ -347,6 +347,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
+## 🔑 Required Environment Variables (Windows PowerShell)
+
+$env:YOUTUBE_API_KEY="your_key"
+$env:ANALYTICS_FINANCE_ADMIN_API_KEY="your_admin_key"
+$env:YOUTUBE_API_ENABLED="true"
+
 For support and questions:
 
 - Create an issue in the repository
@@ -363,5 +369,7 @@ For support and questions:
 - [ ] Real-time collaboration features
 
 ---
+## 🎥 Demo Video
 
-**Built with ❤️ for final year engineering projects**
+▶️ [Watch Demo Video on YouTube](https://youtu.be/DQvxunWNptU)
+
