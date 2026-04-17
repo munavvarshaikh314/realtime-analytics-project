@@ -1,0 +1,36 @@
+# Ignore build outputs
+target/
+build/
+dist/
+.next/
+out/
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Env files (secrets)
+.env
+.env.*
+application-secret.yml
+application-prod-secret.yml
+
+# Maven wrapper logs
+.mvn/wrapper/maven-wrapper.jar
+
+# Kafka local files (if any)
+kafka-logs/
+
+# Redis dump
+dump.rdb

@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:analytics_db
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  kafka:
+    bootstrap-servers: localhost:9092
+    admin:
+      initialize: false
+      auto-create: false
+      fail-fast: false
+    consumer:
+      group-id: analytics-group
+    listener:
+      auto-startup: false
+
+logging:
+  level:
+    org.apache.kafka: WARN
+    org.springframework.kafka: WARN
+
+analytics:
+  simulation:
+    enabled: false
+  finance:
+    enabled: false
+    admin-api-key: test-admin-key
+    providers:
+      crypto:
+        enabled: false
+      equities:
+        enabled: false
+  connectors:
+    youtube:
+      enabled: true
+    reddit:
+      enabled: false
+
+youtube:
+  api:
+    key: test

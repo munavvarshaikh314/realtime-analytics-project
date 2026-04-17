@@ -1,0 +1,155 @@
+server:
+  port: 8080
+  address: 0.0.0.0
+
+spring:
+  application:
+    name: realtime-analytics-app
+  
+  # Database Configuration
+  datasource:
+    url: jdbc:h2:mem:analytics_db
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  # Kafka Configuration for real-time streaming
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: analytics-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    timeout: 1000ms
+
+# Custom application properties
+analytics:
+  simulation:
+    enabled: true
+
+  # IoT Data Configuration
+  iot:
+    data-retention-days: 30
+    batch-size: 100
+    processing-interval: 5000 # milliseconds
+    supported-sensors:
+      - temperature
+      - humidity
+      - pressure
+      - motion
+      - light
+      - air-quality
+  
+  # Social Media Configuration
+  social-media:
+    data-retention-days: 7
+    batch-size: 50
+    processing-interval: 2000 # milliseconds
+    platforms:
+      - twitter
+      - facebook
+      - instagram
+      - linkedin
+      - youtube
+      - reddit
+    sentiment-analysis: true
+    trend-detection: true
+
+  finance:
+    enabled: true
+    buffer-size: 500
+    sequence-length: 20
+    retrain-threshold: 60
+    anomaly-threshold: 2.0
+    prediction-cache-ttl-seconds: 300
+    report-max-records: 500
+    admin-api-key: ${ANALYTICS_FINANCE_ADMIN_API_KEY:change-me-now}
+    providers:
+      crypto:
+        enabled: true
+        asset-ids: bitcoin,ethereum,solana,cardano
+        vs-currency: usd
+        fetch-interval-ms: 15000
+      equities:
+        enabled: ${POLYGON_API_ENABLED:false}
+        base-url: ${POLYGON_API_BASE_URL:https://api.polygon.io}
+        api-key: ${POLYGON_API_KEY:}
+        tickers: ${POLYGON_TICKERS:AAPL,MSFT,NVDA,AMZN,GOOGL}
+        fetch-interval-ms: ${POLYGON_FETCH_INTERVAL_MS:15000}
+
+  connectors:
+    youtube:
+      enabled: ${YOUTUBE_API_ENABLED:true}
+      schedule-ms: 15000
+      fetch-max: ${YOUTUBE_FETCH_MAX:10}
+      region: ${YOUTUBE_REGION:IN}
+    reddit:
+      enabled: ${REDDIT_API_ENABLED:true}
+      schedule-ms: 20000
+      fetch-limit: ${REDDIT_FETCH_LIMIT:8}
+      subreddits: investing,stocks,cryptocurrency
+      user-agent: ${REDDIT_USER_AGENT:realtime-analytics-app/1.0}
+  
+  # ML Model Configuration
+  ml:
+    model-update-interval: 3600000 # 1 hour in milliseconds
+    prediction-confidence-threshold: 0.75
+    training-data-size: 10000
+    models:
+      iot-anomaly-detection: true
+      social-sentiment-analysis: true
+      trend-prediction: true
+      user-behavior-analysis: true
+
+# Kafka Topics
+kafka:
+  topics:
+    iot-data: iot-sensor-data
+    social-media-data: social-media-feed
+    processed-data: processed-analytics-data
+    ml-predictions: ml-prediction-results
+    alerts: system-alerts
+    finance-data: finance-market-data
+    finance-predictions: finance-predictions
+
+# Actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  health:
+    redis:
+      enabled: ${REDIS_HEALTH_ENABLED:false}
+
+logging:
+  level:
+    com.analytics: DEBUG
+    org.springframework.kafka: INFO
+    org.deeplearning4j: INFO
+
+youtube:
+  api:
+    key: ${YOUTUBE_API_KEY:}
