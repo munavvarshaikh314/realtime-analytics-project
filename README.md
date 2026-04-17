@@ -1,6 +1,6 @@
 # Real-time Data Analytics Application
 
-A comprehensive real-time data analytics platform built with Java Spring Boot and React, featuring machine learning integration for IoT sensor data and social media analytics.
+A comprehensive real-time data analytics platform built with Java Spring Boot and React, featuring machine learning integration for IoT sensor data and social media analytics youtube etc, finance data analytics.
 
 ## 🚀 Features
 
