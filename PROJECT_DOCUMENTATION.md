@@ -1,9 +1,9 @@
 # Real-time Data Analytics Application with Machine Learning Integration
 
-**Author:** Manus AI  
-**Project Type:** Final Year Engineering Resume Project  
+**Author:** munavvar shaikh 
+**Project Type:** java Application  
 **Technology Stack:** Java Spring Boot, React, Kafka, Deeplearning4j, WebSockets  
-**Date:** December 2025
+**Date:** march 2026
 
 ## Executive Summary
 
@@ -598,8 +598,8 @@ The scalable, cloud-ready architecture aligns with industry trends toward cloud-
 
 **Document Information:**
 - **Total Word Count:** Approximately 15,000 words
-- **Last Updated:** December 2025
+- **Last Updated:** march 2026
 - **Version:** 1.0
-- **Author:** Manus AI
+- **Author:** munavvar shaikh
 - **Document Type:** Technical Documentation and Project Report
 
